@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>The Nature Of Code Final Project</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <a class="navbar-brand" href="#">The Nature of Code Project</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link" href="noise.html">Perlin Noise <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="force.html">Forces</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="rotation.html">Rotation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="other.html">Bonus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="particle.html">Particles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="agent.html">Autonomous Agents</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+  <div id="main">
+    <div id="intro">
+      <h1>Rotational Physics</h1>
+      <p>Taking a little break from the world of vectors and froces, a brief introduction in rotational physics, and the last thing I had time to start for this project. Rotational physics is interesting, because while it still is more complicated
+        than linear physics, just like in the real world, it has one simplification in terms of code. Rotational values are all scalar quantaties, which means no more fuss with vectors, we are back to first grade math. Nice! </p>
+    </div>
+    <div class="sketchContainer" id="sketch1">
+      <div id="rotation" class="flexChild">
+
+      </div>
+      <div class="flexChild">
+        <span class='sketchText'>
+          <h1>Rotational Kinematics</h1>
+          <p>Kinematics is a good place to start, because it is almost the same in its both linear and rotational form, minus the vector stuff. Angular position is by how much an object has already rotated, angular velocity is how many radiants it
+            rotates per second, and angular acceleration modifies velocity. In other words, it is the same Euler Integration logic. A proof of concept here, I set the magnitute of acceleration to depend on how far from the rectangle the mouse is.</p>
+        </span>
+      </div>
+
+    </div>
+    <div class="sketchContainer" id="sketch2">
+      <div class="flexChild" id='gravityRotation'>
+
+      </div>
+      <div class="flexChild">
+        <span class="sketchText">
+          <h1>Gravity, Rotation, Direction</h1>
+          <p>Here I took a bit of a step back from the last gravity example. I still used its true formula, however instead of having all objects attract each other, for simplicty sake I just had one object attract everything else. Imagine that it is
+            rediculously more massive than the triangles. The main idea of this sketch however is to combine Duynamics and Rotation. I used the angular quantities I had from last example, as well as vectors from dynamics to snap the triangles to
+            point in the direction they are going. There is significant imporecision assosiated with this, of course objects would not just magicaly snap into the correct rotation, but for the purposes of this sketch, that is allowable</p>
+        </span>
+      </div>
+
+    </div>
+    <!-- <div id="collide" class="sketchContainer">
+
+    </div> -->
+  </div>
+
+</body>
+<script src="../scripts/p5.js" charset="utf-8"></script>
+<!-- <script src="../scripts/walker1Final.js" charset="utf-8"></script> -->
+<script src="mainRotation.js" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>The Nature Of Code Final Project</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <a class="navbar-brand" href="#">The Nature of Code Project</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="noise.html">Perlin Noise <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="force.html">Forces</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="rotation.html">Rotation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="other.html">Bonus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="particle.html">Particles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="agent.html">Autonomous Agents</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+  <div id="main">
+    <div id="intro">
+      <h1>Dynamics/Forces</h1>
+      <p>Warm up over, time to launch into the meat of it, and what better way to start than forces. The Kinematics have been cramped into this section too, since they serve as the backbone, and are in the realm of p5 sketch very limited. The only
+        thing from kinematics that is applicable here is that velocity modifies position, acceleration modifies velocity, and all of this occurs over a period of time. Since we are working on a computer, which displays elements at a certain frame
+        rate, we don't even need calculus. Instead, I used what is called Euler Integration. Instead of a continuous slope for things, there are time jumps. FOr display purposes that is sufficient. Similar to physics, an easy way to describe forces
+        is to have a general equation, F=ma, and then seperate equations for various different forces. I have covered gravity, friction, drag, and a custom force I call wind.</p>
+    </div>
+    <div class="sketchContainer" id="sketch1">
+      <div id="gravity" class="flexChild">
+
+      </div>
+      <div class="flexChild">
+        <span class='sketchText'>
+          <h1>Simple Kinematics</h1>
+          <p>Before the real forces however, it is important to have some basics down. In this sketch I take a look at basic kinematics, and set up a relationsship between position, velocity, and acceleration. In addition, I use this chance to
+            practice
+            thinking in vectors, as that will become extremely useful for forces. Lastly, from here on out, objects will play a big role in all of my programs, so I practice working with those. Although in this sketch there is only a single mover, so
+            an object is arguably redundant, as I move into multipl objects, and especially particle systems, OOP is going to be a lifeline. In this sketch, a mover is placed in the center of a sketch, and given a random velocity. It is then set to
+            accelerate toward the mouse. This is also where a big challenge of physics simulation in prgramming is noticeable. While what appears on the window may ressemble some part of our world, it is but a collection of pixels on the screen. It
+            is
+            impossible to create a perfectly precise physics engine, not only because we do not have a perfect understanding of physics, but also because of our limited processing power. Simulation requires a lot of approximating, and rule breaking.
+            For example, in this case I put a limit on how big the velocity can grow. Otherwise the acceleration would just launch the mover out of the window screen upon impact with the cursor.</p>
+        </span>
+      </div>
+
+    </div>
+    <div class="sketchContainer" id="sketch2">
+      <div class="flexChild" id='collide'>
+
+      </div>
+      <div class="flexChild">
+        <span class="sketchText">
+          <h1>Forces</h1>
+          <p>Now for some basic force concepts. First I made a general force function which would take a given force, and a given mass, divide them and calculate acceleration. Now all I have to do is to plug in formulas for different forces into this
+            function, and each would modify the velocity accordingly. The problem here is once again, the real worlds, and a bunch of pixels are very different things. Because of this, physical constants, and certain variables mean aboslutely
+            nothing, and onyl congest the code. This would have to be simplified, which means approcimation. For example, the Force of Kinetic Friction is the product of mu and the normal force. However, the normal force is not really a thing in my
+            sketch, nor do I need to add it. It's mechanic of not letting objects fall through objects is already present in my edge collision and mover collision logic. So instead, my force of friction is simply mu, and even that is just randomaly
+            selected, rather than be used from some real life material. As long as the visuals support what would roughly happen, I can always run actual, true calculations in the background and give them off with numbers. For animation however, a
+            crude approximation is sufficient, and not much more is possible with a single laptop. In this sketch I have the force of gravity(also simplified, to just being acceleration down. This is barely even a force in fact, since mass does not
+            affect gravity), I could lave it as just acceleration, a force of friction, as well as a custom wind force</p>
+        </span>
+      </div>
+
+    </div>
+    <div class="sketchContainer" id="sketch3">
+      <div class="flexChild" id="drag">
+
+      </div>
+      <div class="flexChild">
+        <span class="sketchText">
+          <h1>More Forces</h1>
+          <p>A seperate sketch for better visualization, but this is the frag force. In real life it has a complciated formula that has to do with shape, surface area, velocity, a constant ro, and a whole bunch more. In my sketch, all of this is
+            approximated by multiplying the velocity by my own constant ro, and reversing direction. </p>
+        </span>
+      </div>
+    </div>
+    <div class="sketchContainer" id="sketch3">
+      <div class="flexChild" id="gravityMultiple">
+
+      </div>
+      <div class="flexChild">
+        <span class="sketchText">
+          <h1>N-Body Problem</h1>
+          <p>As I said before, the gravitational "force" I was working with before was not a force. It was an illusion I created for the sketch to look realistic. That's kind of what this kind of animation for a physics engine is all about, sure, but
+            that does not mean there is room for improvement. This is the N-body problem. The real universal gravitional force, from which the gravity on earth is derived, is actually quite a lot more complicated. Unlike gravity on earth it takes
+            into account mass, as well as how far apart the objects are. Moreover, because of how light most things on this earth are compared to, well, earth, we tend to disregard the gravitationl force we apply on Earth. When the objects are of
+            similar mass however, that is no longer the case. Gravity, jsut like any other force has a newton's 3rd law pair. With two bodies, this is easy enough. Each applies a force on the other, proportionate to their combined mass, and how far
+            apart they are. The more objects you add in however, the more complicated it gets. This is why the 2 Body Problem is a solved problem, whereas the three body problme and above are not. They can only be approximated with very advanced
+            math. Luckily, I am a cheater, and my world is not real. Since stuff on the screen does not happen smoothly, but rather is a jump from fram to frame, I have nothing better to do than use Euler Integration, and that means a veyr simplifed
+            N-th body problem. If I have certain time jumps, I don't even need calculus. Here is a sketch with multiple objects, each attracting each other.</p>
+        </span>
+      </div>
+    </div>
+    <!-- <div id="collide" class="sketchContainer">
+
+    </div> -->
+  </div>
+
+</body>
+<script src="../scripts/p5.js" charset="utf-8"></script>
+<!-- <script src="../scripts/walker1Final.js" charset="utf-8"></script> -->
+<script src="mainForce.js" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>

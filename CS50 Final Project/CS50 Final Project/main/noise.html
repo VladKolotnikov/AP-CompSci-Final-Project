@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>The Nature Of Code Final Project</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <a class="navbar-brand" href="#">The Nature of Code Project</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="noise.html">Perlin Noise <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="force.html">Forces</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="rotation.html">Rotation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="other.html">Bonus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="particle.html">Particles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="agent.html">Autonomous Agents</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+  <div id="main">
+    <div id="intro">
+      <h1>Welcome to my Final Project!</h1>
+      <p>Before diving into the various fun animations I have here, allow me a short introduction. This website is meant to present the Work in Progress that is my project. This is by no means finished, and something I intend to work on for the
+        entirety of the summer, and likely a healthy portion of my senior year on as well. The overarching concept is to create a physics engine, powerful enough to be able to accurately simmulate any of the physics mechanics covered by AP Physics 1.
+        This includes Kinetics, Dynamics, Energy, Momentum, Simple Harmonic Motion, both in their linear and angular variations. In order to achieve this goal, I first have to learn a lot about how to translate these physics laws into computer code.
+        It
+        might seem as simple as just making a bunch of variables for various physics constants, and make some equations to calculate everything I need, but as you will see later nothing is this simple. As my starting point I picked the book The
+        Nature
+        of Code by Daniel Shiffman. Dan Shiffman is a proffessor at Tisch School in New York, and also makes coding courses on You Tube under the channel "<a href="https://www.youtube.com/c/TheCodingTrain/featured" target="_blank">The Coding
+          Train</a>". He has also
+        written two books about programming, "Learning
+        Processing, A Beginner's Guide to Programing" and "The Nature of Code". Both of these books were originally written in Java, and its Processing 3 library, however he also released updated versions when Processing's successor p5 for JS was
+        created. This is where I began my journey into the simulation of physics. Starting from this page, follow the links to embark on the journey from chapter to chapter of the book as I program its various exercises, changing them in some places
+        where it felt appropriate. Alternatively, the Navbar will serve as a guide if you want to take a look at the topics in a different order.</p>
+    </div>
+
+    <div class="sketchContainer">
+      <div class="flexChild" id='noise1D'>
+
+      </div>
+      <div class="flexChild">
+        <span class='sketchText'>
+          <h1>1D Perlin Noise</h1>
+          <p>As a warm up the Nature of Code book goes over Perlin Noise. Ken Perlin is a professor who was awarded the noble prize for this procedure, which is capable of generating smooth random values. He desgined this noise for quick, easy, and
+            cheap texture generation for old Tron movie. At it's core, the function references all values that came before it to select a new random value. Furthermore it does so over multiple octaves, and then adds them up to increase detail. In
+            this
+            example, I just used p5 to graph the noise function. </p>
+        </span>
+      </div>
+    </div>
+
+    <div class="sketchContainer">
+      <div class="flexChild" id='noise2D'>
+
+      </div>
+      <div class="flexChild">
+        <span class="sketchText">
+          <h1>2D Perlin Noise</h1>
+          <p>As much fun as 1D noise is, arguably the most useful form of perlin noise is 2D noise. While it still has the same process of generating over octaves, its mechanic is slightly different. 2D noise covers the first row of pixels with it's
+            1D
+            variant, and then moves onto the row below. From there, instead of just referencing the values that came before, it looks all around it, and roughly averages out to make a new value. It repeats this pixel row by pixel row creating all
+            sorts
+            of various textures. Depening on the offset of the noise, which determines smoothness, as well as its detailing(how much octaves there are) it can generate wood, marble, clouds, or any other material which has a smooth pattern to it</p>
+        </span>
+      </div>
+    </div>
+    <div class="sketchContainer">
+      <div class="flexChild" id='terrain'>
+
+      </div>
+      <div class="flexChild">
+        <span class="sketchText">
+          <h1>Random Terrain Generator</h1>
+          <p>The last thing I did, which was outside the scope of the book, before embarking on the physics engine journey was create a 3d Terrain Random Generator. Now, a logical assumption here would be that I would require 3D noise (which by the
+            way
+            does exist, even with the p5 library), however that is not the case. 3D noise would be used for somethinglike filling a room with gas, or making a 3d cloud. As we all know however, the Earth is flat, so I think I can get away with using
+            2D
+            noise by just rotating the plane. To begine, I created a mesh made up of what is called Triangle Strip. It is one way to cover a surface with mesh, and have a healthy degree of flexibility for which verteces you can pull out. Then I
+            rotated
+            the plan slightly, and instead of recolloring pixels like befre, I would pull out or push in verteces of the mesh in accordance to 2D noise. The result: a completely random, and infinite terrain.</p>
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+<script src="../scripts/p5.js" charset="utf-8"></script>
+<script src="mainNoise.js" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>
